@@ -1,41 +1,31 @@
 import { useState } from "react";
 
 export default function Test(){
-    const [userName,setUserName]= useState("Vaishali");
-    const [userAge,setUserAge]= useState(22)
-    const [userEmail,setUserEmail]= useState("vaishali14@gmail.com")
-    const [userNumber,setUserNumber] =useState(0)
-   
-    let name = "gurjar"
-    const changeName = () =>{
-        name = "Vaishali Gurjar"
-        console.log(name);
-        setUserName("hello Vaishali Gurjar")
-    }
-    
-    const increment = () =>{
-       setUserNumber(userNumber+1)
+    const[userData,setUserData]=useState({
+        userLname : '',
+        userFname : '',
+        userContact : '',
+        userEmail : '',
+        userPassword : '',
+        userCity : ''
 
-
+    })
+    const getUserData= () =>{
+        console.log(userData)
     }
-    const decrement = () =>{
-        setUserNumber(userNumber-1)
-    }
-
-  
     return(
         <>
-        <h1>Hello Test</h1>
-        <h1>{userName}</h1>
-        <h1>{userAge}</h1>
-        <h1>{userEmail}</h1>
-        
-        <h1>{name}</h1>
-        <button onClick={changeName}>Change</button>
-        <button onClick={increment}>Increment</button>
-        <span>{userNumber}</span>
-        <button onClick={decrement}>Decrement</button>
+       First Name: <input type="text" onChange={(e)=>setUserData({...userData,userFname :e.target.value})}/><br></br><br></br> 
+       Last Name: <input type="text" onChange={(e)=>setUserData({...userData,userLname :e.target.value})}/><br></br><br></br> 
+       Contact no: <input type="text" onChange={(e)=>setUserData({...userData,userContact :e.target.value})}/><br></br><br></br>   
+        Email:<input type="email" onChange={(e)=>setUserData({...userData,userEmail :e.target.value})}/><br></br><br></br> 
+        Password: <input type="text" onChange={(e)=>setUserData({...userData,userPassword :e.target.value})}/><br></br><br></br> 
+        City: <input type="text" onChange={(e)=>setUserData({...userData,userCity :e.target.value})}/><br></br><br></br>   
 
-        </>
+        <button onClick={getUserData}>Get Data</button>
+
+
+
+       </> 
     )
 }
